@@ -12,23 +12,31 @@ This template provides a minimal setup to get a static site based on Vite + Reac
 
 ## Prerequisites
 
-tbd...
+You need node with the version specified in the [.nvmrc](.nvmrc) file.
 
 ## Installation
 
-tbd...
+```
+npm ci
+```
 
-## Usage or Deployment
+## Development (Client-Side-Rendering)
 
-tbd...
+```
+npm run dev
+```
 
-## Development
+## Build the static pages (Static-Site-Generation)
 
-tbd...
+```
+npm run build
+```
 
-## Tests
+## Preview serving the static pages (Static-Site-Generation)
 
-tbd...
+```
+npm run preview
+```
 
 ## Contributing
 
