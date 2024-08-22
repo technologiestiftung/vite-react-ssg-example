@@ -14,11 +14,11 @@ const { render } = await import('./dist/server/entry-server.js');
 const { routes } = await import('./dist/assets/routes/routes.js');
 const { content } = await import('./dist/assets/content/content.js');
 
-function generateStaticPages() {
+async function generateStaticPages() {
   for (const { path } of routes) {
     console.log('path:', path);
 
-    const appHtml = render(path)
+    const appHtml = await render(path)
     const pageTitle = content[path].title
 
     const html = template
@@ -46,4 +46,4 @@ function writeFileSyncRecursive(filename, content) {
   fs.writeFileSync(filename, content);
 }
 
-generateStaticPages();
+generateStaticPages().catch(console.error);
