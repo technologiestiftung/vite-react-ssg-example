@@ -1,12 +1,10 @@
-import { addAndMultiply } from '../functions/add'
-import { multiplyAndAdd } from '../functions/multiply'
+import Counter from "../components/Counter.tsx";
 
 export default function Index() {
   return (
     <>
       <h1>Home</h1>
-      <div>{addAndMultiply(1, 2, 3)}</div>
-      <div>{multiplyAndAdd(1, 2, 3)}</div>
+      <Counter />
     </>
   )
 }
