@@ -12,14 +12,18 @@ const toAbsolute = (p) => path.resolve(__dirname, p)
 const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8');
 const { render } = await import('./dist/server/entry-server.js');
 const { routes } = await import('./dist/assets/routes/routes.js');
+const { content } = await import('./dist/assets/content/content.js');
 
 function generateStaticPages() {
   for (const { path } of routes) {
     console.log('path:', path);
 
     const appHtml = render(path)
+    const pageTitle = content[path].title
 
-    const html = template.replace(`<!--app-html-->`, appHtml)
+    const html = template
+      .replace('<title></title>', `<title>${pageTitle}</title>`)
+      .replace(`<!--app-html-->`, appHtml)
 
     const filePath = `dist${path}index.html`
     writeFileSyncRecursive(toAbsolute(filePath), html)
